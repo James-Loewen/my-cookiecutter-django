@@ -1,0 +1,88 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --black: 34, 35, 42;
+}
+
+html {
+  font-size: 16px;
+
+  @media (min-width: 600px) {
+    font-size: 18px;
+  }
+}
+
+body {
+  min-height: 100vh;
+  min-width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: rgb(var(--black));
+}
+
+main {
+  margin: auto;
+  padding: 1rem;
+  width: min(100%, 720px);
+}
+
+h1 {
+  margin-bottom: .5rem;
+  font-size: 2.5rem;
+  line-height: 1;
+  color: coral;
+}
+
+p {
+  margin-bottom: .5rem;
+}
+
+ul {
+  padding-left: 1.5rem;
+}
+
+.cat-name {
+  font-size: 1.15rem;
+  font-weight: bolder;
+  color: darkslateblue;
+  user-select: none;
+}
+
+#alert-btn {
+  padding: .5rem;
+  border-radius: .5rem;
+  background-color: #FFF;
+  border: 2px solid rgb(var(--black));
+  color: rgb(var(--black));
+  font-weight: bolder;
+  transition:
+    background-color ease 200ms,
+    color ease 200ms,
+    transform ease 60ms;
+
+  &:hover {
+    background-color: rgb(var(--black));
+    border: 2px solid rgb(var(--black));
+    color: #FFF;
+  }
+
+  &:active {
+    transform: scale(.95);
+  }
+}
+
+.False {
+  color: red;
+  font-weight: bolder;
+}
+
+.True {
+  color: green;
+  font-weight: bolder;
+}

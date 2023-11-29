@@ -1,0 +1,11 @@
+{
+  "project_name": "My Django Project",
+  "project_slug": "{{ cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
+  "description": "Starter template for a Django project.",
+  "version": "1.0.0",
+  "author_name": "James Loewen",
+  "username_type": [
+    "username",
+    "email"
+  ]
+}

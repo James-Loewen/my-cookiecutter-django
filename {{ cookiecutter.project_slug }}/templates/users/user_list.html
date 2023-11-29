@@ -1,0 +1,20 @@
+{% raw %}
+{% extends "base.html" %}
+
+{% block content %}
+<main>
+  {% if object_list %}
+    <h1>Users:</h1>
+    <ul>
+      {% for user in object_list %}
+        <li>{{ user }}</li>
+        <ul>
+          <li>Is Staff: <span class="{{ user.is_staff }}">{{ user.is_staff }}</span></li>
+          <li>Is Superuser: <span class="{{ user.is_superuser }}">{{ user.is_superuser }}</span></li>
+        </ul>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</main>
+{% endblock content %}
+{%- endraw %}

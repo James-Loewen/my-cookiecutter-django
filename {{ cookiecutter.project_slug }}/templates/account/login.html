@@ -1,0 +1,26 @@
+{% raw %}
+{% extends "base.html" %}
+
+{% block title %}Sign In{% endblock title %}
+
+{% block content %}
+  <h1>Log In:</h1>
+
+  <form class="login" method="post" action="{% url "account_login" %}">
+    {% csrf_token %}
+    {% for field in form %}
+      <div>
+        {{ field.label_tag }}
+        {{ field }}
+        {{ field.errors }}
+      </div>
+    {% endfor %}
+    {% if redirect_field_value %}
+      <input type="hidden"
+             name="{{ redirect_field_name }}"
+             value="{{ redirect_field_value }}" />
+    {% endif %}
+    <button type="submit">Sign In</button>
+  </form>
+{% endblock content %}
+{%- endraw %}

@@ -1,0 +1,45 @@
+version: "3"
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: ./compose/production/django/Dockerfile
+    image: {{ cookiecutter.project_slug }}_production_django
+    container_name: {{ cookiecutter.project_slug }}_production_django
+    volumes:
+      - static_volume:/app/static
+    depends_on:
+      - postgres
+    env_file:
+      - ./.envs/.production/.django.env
+      - ./.envs/.production/.postgres.env
+    expose:
+      - 8000
+    command: /start
+
+  postgres:
+    build:
+      context: .
+      dockerfile: ./compose/production/postgres/Dockerfile
+    image: {{ cookiecutter.project_slug }}_production_postgres
+    container_name: {{ cookiecutter.project_slug }}_production_postgres
+    volumes:
+      - {{ cookiecutter.project_slug }}_production_postgres_data:/var/lib/postgresql/data
+    env_file:
+      - ./.envs/.production/.postgres.env
+
+  nginx:
+    build: ./compose/production/nginx
+    image: {{ cookiecutter.project_slug }}_production_nginx
+    container_name: {{ cookiecutter.project_slug }}_production_nginx
+    volumes:
+      - static_volume:/app/static
+    depends_on:
+      - django
+    ports:
+      - ${PROD_PORT}:80
+
+volumes:
+  {{ cookiecutter.project_slug }}_production_postgres_data:
+  static_volume:

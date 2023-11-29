@@ -1,0 +1,18 @@
+{% raw %}
+{% extends "base.html" %}
+
+{% block content %}
+  {% if user.is_authenticated %}
+
+    <h1>Welcome, {{ user }}!</h1>
+    <a href="{% url "account_logout" %}">Sign out</a>
+
+  {% else %}
+
+    <h1>Hello Django, Docker & webpack</h1>
+    <p>Why don't you go ahead and <a href="{% url "account_login" %}">login</a>?</p>
+    <p>Or maybe you need to <a href="{% url "account_signup" %}">sign up</a> first?</p>
+
+  {% endif %}
+{% endblock content %}
+{%- endraw %}

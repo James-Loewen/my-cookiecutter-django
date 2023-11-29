@@ -1,0 +1,22 @@
+{% raw %}
+{% load render_bundle from webpack_loader %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% render_bundle "main" "css" %}
+  <title>{% block title %}Title{% endblock %}</title>
+</head>
+<body>
+  {% spaceless %}
+    <main class="{% block main_classlist %}{% endblock main_classlist %}">
+      {% block content %}{% endblock content %}
+    </main>
+  {% endspaceless %}
+
+  {% render_bundle "main" "js" %}
+</body>
+</html>
+{%- endraw %}
